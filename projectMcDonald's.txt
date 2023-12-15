@@ -1,12 +1,12 @@
 import random
 import time
 money = 25
-language=int(input("select a language, 1-Russian, 2-English:"))
-if language == 1:
+language=int(input("select a language, 1-Russian, 2-English:")) #выбераем язык
+if language == 1: #если русский
     nameReg=str(input("Введите имя:"))
     passwordReg=str(input("Введите пароль:"))
     question = str(input("Хотите сыграть в казино?"))
-    if question == "да":
+    if question == "Да":
         money = 25
         print("у тебя есть 25 $")
         print("Привет это казино тебе надо угадать число от 1 до 50")
@@ -42,7 +42,7 @@ if language == 1:
     Cart = []
     print('Добро пожаловать в McDonald`s!')
     print("Вы являетесь клиентом №", random.randint(1, 100000))
-    IsWorking = int(input('Вы хотите продолжить? (1-yes)'))
+    IsWorking = int(input('Вы хотите продолжить? (1-да)'))
     while IsWorking == 1:
     # меню
         print("Bigmac - [1.25$] - 1")
@@ -85,25 +85,40 @@ if language == 1:
     print("стоимость корзины",Price, "$")
     print("у вас денег:",money)
     DoPay = int(input('Вы уверены? 1 - Да, продолжайте регистрацию; если что-то еще - отмените свой заказ'))
-    if DoPay == 1:
-        money -= Price
-        print("осталось денег",money)
-        Payment = int(input("Наличными или картой? 1 - Оплатите наличными; 2 - Используйте свою карту."))
-        if Payment == 1:
-            Moneyz = int(input("Вставьте наличные"))
-            print(Moneyz - Price, "Это ваш чек. Спасибо, приходите еще!")
-        if Payment == 2:
-            int(input("Введите номер карточки:"))
-            int(input("годна до(пример: 06/23):"))
-            int(input("cvv:"))
-            print("Обрабатываем ваш платеж...")
-            print('Спасибо!')
-    print("До свидания! Мы надеемся увидеть вас снова.")
+    nameSign=str(input("Введите логин:"))
+    passwordSign=str(input("Введите пароль:"))
+    if nameSign == nameReg:
+        if passwordSign == passwordReg:
+            if DoPay == 1:
+                money -= Price
+                print("осталось денег",money)
+                Payment = int(input("Наличными или картой? 1 - Оплатите наличными; 2 - Используйте свою карту."))
+                if Payment == 1:
+                    Moneyz = int(input("Вставьте наличные"))
+                    print(Moneyz - Price, "Это ваш чек. Спасибо, приходите еще!")
+                if Payment == 2:
+                    int(input("Введите номер карточки:"))
+                    int(input("годна до(пример: 06/23):"))
+                    int(input("cvv:"))
+                    print("Обрабатываем ваш платеж...")
+                    print('Спасибо!')
+            print("До свидания! Мы надеемся увидеть вас снова.")
+    else:
+        print("Логин и пароль не подходят")
+        game=str(input("Хотите сыграть в игру?:"))
+        if game=="да":
+            number=int(input("Введите число от 1 до 3:"))
+            if number==1:
+                print("вы были посажены в тюрьму за то, что купили кокаин(слишком много)")
+            if number==2:
+                print("На вас упала лепешка коровы с неба и вы умерли от сотрясения")
+            if number==3:
+                print("Вы выиграли,(вы были расстрелены)")
 elif language == 2:
     nameReg=str(input("Enter a name:"))
     passwordReg=str(input("Enter the password:"))
     question = str(input("Do you want to play at the casino?"))
-    if question == "yes":
+    if question == "Yes":
         money = 25
         print("You have $25")
         print("Hello, this is a casino. You need to guess the number from 1 to 50")
@@ -138,7 +153,7 @@ elif language == 2:
     Price = float(0)
     Cart = []
     print('Welcome to McDonald`s!')
-    print("You are customer №", random.randint(1, 100000))
+    print("You are customer №", random.randint(1, 10000))
     IsWorking = int(input('Do you want to continue? (1-yes)'))
     while IsWorking == 1:
         # меню
@@ -182,18 +197,33 @@ elif language == 2:
     # конец
     print("the cost of the basket", Price, "$")
     DoPay = int(input('Are you sure? 1 - Yes, continue check out; anything else - cancel your order'))
-    if DoPay == 1:
-        print("there is money left",money)
-        Payment = int(input("Cash or Card? 1 - Pay with cash; 2 - Use your card."))
-        if Payment == 1:
-            Moneyz = int(input("Insert cash"))
-            print(Moneyz - Price, "Is your change. Thank you!")
-        if Payment == 2:
-            int(input("Enter the card number:"))
-            int(input("valid until(example:0623 ):"))
-            int(input("cvv:"))
-            print("Processing your payment...")
-            money -= Price
-            time.sleep(10)
-            print('Thank you!')
-    print("Goodbye! We hope to see you again.")
+    nameSign=str(input("Введите логин:"))
+    passwordSign=str(input("Введите пароль:"))
+    if nameSign == nameReg:
+        if passwordSign == passwordReg:
+            if DoPay == 1:
+                print("there is money left",money)
+                Payment = int(input("Cash or Card? 1 - Pay with cash; 2 - Use your card."))
+                if Payment == 1:
+                    Moneyz = int(input("Insert cash"))
+                    print(Moneyz - Price, "Is your change. Thank you!")
+                if Payment == 2:
+                    int(input("Enter the card number:"))
+                    int(input("valid until(example:0623 ):"))
+                    int(input("cvv:"))
+                    print("Processing your payment...")
+                    money -= Price
+                    time.sleep(10)
+                    print('Thank you!')
+            print("Goodbye! We hope to see you again.")
+    else:
+        print("Username or password are not suitable")
+        game=str(input("Do you want to play a game?::"))
+        if game=="Yes":
+            number=int(input("Enter a number from 1 to 3:"))
+            if number==1:
+                print("You were jailed for buying cocaine (too much)")
+            if number==2:
+                print("A cow cake fell on you from the sky and you died of concussion")
+            if number==3:
+                print("You've won,(you were shot)")
